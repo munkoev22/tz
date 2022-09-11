@@ -48,6 +48,10 @@ class Manager extends \yii\db\ActiveRecord
             'is_works' => 'Сейчас работает',
         ];
     }
+    public static function isWork($id){
+            $model = self::findOne($id);
+            return $model->is_works; 
+    }
 
     public static function getList(): array
     {

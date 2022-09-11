@@ -1,6 +1,38 @@
 html,
 body {
     height: 100%;
+    
+}
+.background{
+    background: url(../img/bg-site.jpg) fixed;
+}
+
+
+.breadcrumb > li + li::before {
+    
+    color:black;
+  
+}
+.left{
+    position: relative;
+    left: 20px;
+}
+.right{
+    position: relative;
+    margin-left: 70%;
+}
+.block{
+    display: inline;
+}
+
+.block-content{
+	background: rgba(247,200,138,.2);
+	padding: 10px 30px;
+	box-sizing:border-box;
+	margin: 20px 0;
+	border: 2px dashed #F7C88A;
+	border-radius: 5px;
+    font-size: 120%;
 }
 
 .wrap {
@@ -12,7 +44,9 @@ body {
 
 .wrap > .container {
     padding: 70px 15px 20px;
+    
 }
+
 
 .footer {
     height: 60px;
@@ -113,3 +147,67 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.button-add {
+    background-color: #ffffff;
+    border: 2px solid #16df1d; /* Green */
+    border-radius: 8px;
+    color: rgb(19, 102, 44);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.button-update {
+    background-color: #ffffff;
+    border: 2px solid #151336; /* Green */
+    border-radius: 8px;
+    color: rgb(43, 30, 90);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+.button-delete {
+    background-color: #ffffff;
+    border: 2px solid #9b2929; /* Green */
+    border-radius: 8px;
+    color: rgb(94, 28, 28);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button-add:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+.button-update:hover {
+    background-color: #21225c; /* Green */
+    color: white;
+}
+.button-delete:hover {
+    background-color: #6b2f2f; /* Green */
+    color: white;
+}
+
+.instruction_img{
+    width: 100%;
+}
+

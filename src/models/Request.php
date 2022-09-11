@@ -38,6 +38,7 @@ class Request extends \yii\db\ActiveRecord
         return [
             [['email', 'phone'], 'required'],
             ['email', 'email'],
+            ['created_at', 'datetime'],
             ['manager_id', 'integer'],
             ['manager_id', 'exist', 'targetClass' => Manager::class, 'targetAttribute' => 'id'],
             [['email', 'phone'], 'string', 'max' => 255],
@@ -57,9 +58,29 @@ class Request extends \yii\db\ActiveRecord
             'text' => 'Текст заявки',
         ];
     }
+    public static function getRequests($manager_id){
+        return Request::find()->where(['manager_id' => $manager_id])->all();
+    }
 
     public function getManager()
     {
         return $this->hasOne(Manager::class, ['id' => 'manager_id']);
+    }
+
+    public function hasDuplicates(){ 
+        $prev = Request::find()->where(['or', ['phone'=>$this->phone], ['email' => $this->email]])
+                                ->andWhere(['not in', 'id', $this->id])
+                                ->andWhere(['<', 'created_at', $this->created_at])
+                                ->orderBy(['created_at' => SORT_DESC])
+                                ->one();
+        if(!is_null($prev)){
+            $days = (strtotime($this->created_at) - strtotime($prev->created_at)) / 3600/24;
+            if($days <= 30){
+                return $prev;
+            }
+        }
+        else{
+            return null;
+        }
     }
 }

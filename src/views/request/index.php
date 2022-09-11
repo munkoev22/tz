@@ -39,6 +39,26 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
+                'header' =>'Предыдущая заявка',
+                'class' => yii\grid\ActionColumn::class,
+                'template' => '{prev}',
+                'buttons' => [
+                    'prev' => function ($url, $model) {
+                        $prev = $model->hasDuplicates();
+                        if(!is_null($prev)){
+
+                            return Html::a('Предыдущая заявка', $url, [
+                            ]);
+                        }
+                        else{
+                            return '---';
+                        }
+                    },
+                ],
+                'contentOptions' => ['style' => 'width:1px'],
+            ],
+            [
+                
                 'class' => yii\grid\ActionColumn::class,
                 'template' => '{view}',
                 'buttons' => [

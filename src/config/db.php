@@ -2,10 +2,14 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => getenv('DB_DSN'),
-    'username' => getenv('DB_USERNAME'),
-    'password' => getenv('DB_PASSWORD'),
-    'charset' => 'utf8mb4',
-    'enableSchemaCache' => YII_ENV_PROD,
-    'schemaCacheDuration' => 3600,
+    'dsn' => 'mysql:host=localhost;dbname=bc',
+    'username' => 'root',
+    'password' => '',
+ 
+    'charset' => 'utf8',
+
+    // Schema cache options (for production environment)
+    //'enableSchemaCache' => true,
+    //'schemaCacheDuration' => 60,
+    //'schemaCache' => 'cache',
 ];

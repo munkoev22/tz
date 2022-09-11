@@ -4,7 +4,9 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Manager;
+use app\models\Request;
 use app\models\ManagerSearch;
+use app\models\RequestSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -61,5 +63,18 @@ class ManagerController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+   
+    public function actionRequests($id){
+        return $this->redirect("index.php?r=request%2Fprev-req&manager_id=".$id);
+        $searchModel = new RequestSearch();
+        $dataProvider = $searchModel->search(['RequestSearch'=>['manager_id'=>$id]]);
+        return $this->redirect(['../request/index', 'searchModel' => $searchModel,
+                                                    'dataProvider' => $dataProvider]);
+        // return $this->render('../request/index', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        // ]);
+        
     }
 }
